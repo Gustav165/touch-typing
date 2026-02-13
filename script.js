@@ -19,6 +19,7 @@ fetch('words.json')
 
 function speakWord(word) {
     const utterance = new SpeechSynthesisUtterance(word);
+    promtP.textContent = `${currentWord}`;
     utterance.lang = 'ru-RU'; // язык
     speechSynthesis.speak(utterance); // передаем объект, а не строку
 }
@@ -38,7 +39,7 @@ function checkInput() {
     if (userInput.value.trim() === currentWord) {
         resultP.textContent = "Верно";
     } else {
-        resultP.textContent = `Неверно`;
+        resultP.textContent = "Неверно";
     }
     setTimeout(nextWord, 500);
 }
