@@ -36,11 +36,11 @@ function nextWord() {
 
 function checkInput() {
     if (userInput.value.trim() === currentWord) {
-        resultP.textContent = "Верно!";
+        resultP.textContent = "Верно";
     } else {
-        resultP.textContent = `Неверно. Правильно: ${currentWord}`;
+        resultP.textContent = `Неверно`;
     }
-    setTimeout(nextWord, 1500);
+    setTimeout(nextWord, 500);
 }
 
 startBtn.addEventListener('click', () => {
