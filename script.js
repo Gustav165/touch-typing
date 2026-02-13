@@ -20,7 +20,7 @@ fetch('words.json')
 function speakWord(word) {
     const utterance = new SpeechSynthesisUtterance(word);
     utterance.lang = 'ru-RU';
-    speechSynthesis.speak(utterance);
+    speechSynthesis.speak(word);
 }
 
 function nextWord() {
@@ -33,6 +33,15 @@ function nextWord() {
     resultP.textContent = "";
 }
 
+function checkInput() {
+    if (userInput.value.trim() === currentWord) {
+        resultP.textContent = "Верно!";
+    } else {
+        resultP.textContent = `Неверно. Правильно: ${currentWord}`;
+    }
+    setTimeout(nextWord, 1500);
+}
+
 startBtn.addEventListener('click', () => {
     if (words.length === 0) {
         alert("Слова ещё не загружены, подождите...");
@@ -43,11 +52,13 @@ startBtn.addEventListener('click', () => {
     nextWord();
 });
 
-submitBtn.addEventListener('click', () => {
-    if (userInput.value.trim() === currentWord) {
-        resultP.textContent = "Верно!";
-    } else {
-        resultP.textContent = `Неверно. Правильно: ${currentWord}`;
+// Кнопка "Отправить"
+submitBtn.addEventListener('click', checkInput);
+
+// Отправка через Enter
+userInput.addEventListener('keydown', (e) => {
+    if (e.key === "Enter") {
+        checkInput();
+        e.preventDefault(); // чтобы форма не отправлялась
     }
-    setTimeout(nextWord, 1500);
 });
