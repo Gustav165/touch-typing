@@ -19,9 +19,10 @@ fetch('words.json')
 
 function speakWord(word) {
     const utterance = new SpeechSynthesisUtterance(word);
-    utterance.lang = 'ru-RU';
-    speechSynthesis.speak(word);
+    utterance.lang = 'ru-RU'; // язык
+    speechSynthesis.speak(utterance); // передаем объект, а не строку
 }
+
 
 function nextWord() {
     if (words.length === 0) return;
