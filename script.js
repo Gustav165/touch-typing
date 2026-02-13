@@ -19,7 +19,7 @@ fetch('words.json')
 
 function speakWord(word) {
     const utterance = new SpeechSynthesisUtterance(word);
-    promtP.textContent = `${currentWord}`;
+    promptP.textContent = `${currentWord}`;
     utterance.lang = 'ru-RU'; // язык
     speechSynthesis.speak(utterance); // передаем объект, а не строку
 }
