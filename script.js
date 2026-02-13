@@ -38,8 +38,10 @@ function nextWord() {
 function checkInput() {
     if (userInput.value.trim() === currentWord) {
         resultP.textContent = "Верно";
+        speakWord("Верно");
     } else {
         resultP.textContent = "Неверно";
+        speakWord("Неверно");
     }
     setTimeout(nextWord, 500);
 }
